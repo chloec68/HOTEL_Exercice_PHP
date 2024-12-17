@@ -5,14 +5,16 @@ class Hotel {
     private string $nomHotel; 
     private string $adresseHotel;
     private int $nbChambres;
+    private string $ville;
 
     private array $chambres;
 
     // fonction constructeur 
-    public function __construct(string $nomHotel, string $adresseHotel, int $nbChambres){
+    public function __construct(string $nomHotel, string $adresseHotel, int $nbChambres, string $ville){
         $this->nomHotel = $nomHotel;
         $this->adresseHotel = $adresseHotel;
         $this->nbChambres = $nbChambres;
+        $this->ville=$ville;
 
         $this->chambres=[];
     }
@@ -32,6 +34,14 @@ class Hotel {
 
     public function setAdresseHotel($adresseHotel){
         $this->adresseHotel=$adresseHotel;
+    }
+
+    public function getVille(){
+        return $this->ville;
+    }
+
+    public function setVille($ville){
+        $this->ville=$ville;
     }
 
     public function getNbChambres():int{
@@ -56,5 +66,10 @@ class Hotel {
 
     public function afficherChambresReservees(){
 
+    }
+
+
+    public function __toString(){
+        return $this->nomHotel." ".$this->ville;
     }
 }

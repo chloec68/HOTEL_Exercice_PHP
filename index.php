@@ -7,8 +7,8 @@ spl_autoload_register(function ($class_name) {
 
 
 //Création des hôtels
-$hilton = new Hotel ("Hilton **** STRASBOURG","10, route de la Gare 67000 STRASBOURG",30);
-$regent = new Hotel ("Regent **** Paris","61, rue Dauphine 75006 Paris",25);
+$hilton = new Hotel ("Hilton ****","10, route de la Gare 67000",30,"STRASBOURG");
+$regent = new Hotel ("Regent ****","61, rue Dauphine 75006",25,"Paris");
 
 //Création des clients
 $virgileG = new Client("GIBELLO","Virgile");

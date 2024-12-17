@@ -46,10 +46,15 @@ class Client {
         public function afficherReservations(){
             $result = "<p style=font-family:Arial>"."Réservations de ".$this->getClientSurname()." ".$this->getClientName()."<br>";
 
+
             foreach($this->reservations as $reservation){
-                $result.= $this->getHotel()." /"."Chambre :".$this->getNumeroChambre()." (".$this->getNbLits()." - ".$this->getPrixNuit()." - "."Wifi : ".$this->getWifi().")".$this->getDateReservation()." au ".$this->getDateDepart();
+              $result.= $reservation->getClient();
             }
 
             return $result;
+        }
+
+        public function __toString(){
+            return $this->clientSurname." ".$this->clientName;
         }
 }
