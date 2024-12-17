@@ -4,19 +4,22 @@ class Chambre {
     private string $numeroChambre;
     private string $nbLits;
     private float $prixNuit;
-    private boolean $wifi;
-    private boolean $booked;
+    private bool $wifi;
+
+    // private Client $client;
 
     private Hotel $hotel;
 
-    public function __construct(Hotel $hotel,string $numeroChambre,string $nbLits, float $prixNuit, boolean $wifi, boolean $booked){
+    public function __construct(string $numeroChambre,string $nbLits, float $prixNuit, bool $wifi,$hotel){
         $this->numeroChambre = $numeroChambre;
         $this->nbLits = $nbLits;
         $this->prixNuit = $prixNuit;
         $this->wifi = $wifi;
-        $this->booked = $booked;
+        
 
-        $this->hotel=addHotel($this);
+        $this->hotel=$hotel;
+
+        // $this->client->addChambre($this);
     }
 
     public function getNumeroChambre():string{
@@ -43,7 +46,7 @@ class Chambre {
         $this->prixNuit = $prixNuit;
     }
 
-    public function getWifi():boolean{
+    public function getWifi():bool{
         return $this->wifi;
     }
 
@@ -51,12 +54,5 @@ class Chambre {
         $this->wifi=$wifi;
     }
 
-    public function getBooked($booked):boolean{
-        return $this->booked;
-    }
-
-    public function setBooked(){
-        $this->booked=$booked;
-    }
 }
 

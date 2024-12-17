@@ -78,10 +78,10 @@ class Hotel {
         $result="<p style=font-family:Arial>"."Réservation de l'hôtel ".$this->getNomHotel()."</p>";
 
             if($this->getReservations()==[]){
-                $result .= "Aucune réservation!";
+                $result .= "<p style=font-family:Arial>"."Aucune réservation!"."</p>";
             }else{
             foreach($this->reservations as $reservation){
-                
+                $result.= $this->clientSurname;
 
             
             }
