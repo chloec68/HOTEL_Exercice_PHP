@@ -6,7 +6,7 @@ class Hotel {
     private string $adresseHotel;
     private int $nbChambres;
 
-    // private array $chambres;
+    private array $chambres;
 
     private array $reservations;
 
@@ -16,7 +16,8 @@ class Hotel {
         $this->adresseHotel = $adresseHotel;
         $this->nbChambres = $nbChambres;
 
-        // $this->chambres=[];
+        $this->chambres=[];
+
         $this->reservations=[];
     }
 
@@ -37,7 +38,7 @@ class Hotel {
         $this->adresseHotel=$adresseHotel;
     }
 
-    public function getNbChambres(){
+    public function getNbChambres():int{
         return $this->nbChambres;
     }
 
@@ -45,22 +46,9 @@ class Hotel {
         $this->NbChambres=$nbChambres;
     }
 
-
-
-    public function showInfoHotel(){
-        $result = "<p style=font-family:Arial>".$this->getNomHotel()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : ".$this->getNbChambres()."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
-         return $result;
+    public function addChambre(Chambre $chambre){
+        $this->chambres[]=$chambre;
     }
-
-
-    // public function getChambres():array{
-    //     return $this->chambres;
-    // }
-
-    // public function setChambres($chambres){
-    //     $this->chambres=$chambres;
-    // }
-
 
     public function getReservations():array{
         return $this->reservations;
@@ -72,7 +60,24 @@ class Hotel {
 
     public function addReservation(Reservation $reservation){
         $this->reservations[]=$reservation;
+        //ou array_push($this->livres,$livre);
     }
+
+
+    // fonctions permettant de compter le nombre de chambres disponibles 
+    function combienChambresReservees(){
+        $chambresReservees = $this->getNbChambres - count($this->reservations);  
+        //nombre chambres réservées = count($this->reservations) 
+    }
+    
+
+    // fonctions affichage
+
+    public function showInfoHotel(){
+        $result = "<p style=font-family:Arial>".$this->getNomHotel()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : ".$this->getNbChambres()."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
+         return $result;
+    }
+
 
     public function showReservations(){
         $result="<p style=font-family:Arial>"."Réservation de l'hôtel ".$this->getNomHotel()."</p>";
@@ -81,9 +86,7 @@ class Hotel {
                 $result .= "<p style=font-family:Arial>"."Aucune réservation!"."</p>";
             }else{
             foreach($this->reservations as $reservation){
-                $result.= $this->clientSurname;
-
-            
+                $result.="test";
             }
         }
         return $result;
