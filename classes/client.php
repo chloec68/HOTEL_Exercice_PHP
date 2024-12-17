@@ -13,7 +13,7 @@ class Client {
             $this->reservations=[];
         }
 
-        public function getClientName(){
+        public function getClientName():string{
             return $this->clientName;
         }
 
@@ -21,7 +21,7 @@ class Client {
             $this->clientName=$clientName;
         }
 
-        public function getClientSurname(){
+        public function getClientSurname():string{
             return $this->clientSurname;
         }
 
@@ -29,8 +29,7 @@ class Client {
             $this->clientSurname=$clientSurname;
         }
 
-
-        public function getReservations(){
+        public function getReservations():array{
             return $this->reservations;
         }
 

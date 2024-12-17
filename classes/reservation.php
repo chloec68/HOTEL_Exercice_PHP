@@ -1,32 +1,21 @@
 <?php
 
 class Reservation{
-    private Hotel $hotel;
     private Client $client;
     private Chambre $chambre;
     private DateTime $dateReservation;
     private DateTime $dateDepart;
 
 
-    public function __construct(Hotel $hotel, Client $client,Chambre $chambre, string $dateReservation, string $dateDepart){
-        $this->hotel=$hotel;
+    public function __construct(Client $client,Chambre $chambre, string $dateReservation, string $dateDepart){
         $this->client=$client;
         $this->chambre=$chambre;
         $this->dateReservation=new DateTime($dateReservation);
         $this->dateDepart=new DateTime($dateDepart);
   
-        $this->hotel=addReservation($this);
-        $this->client=addReservation($this);
-        $this->chambre=addReservation($this);
+        // $this->client=addReservation($this);
+        // $this->chambre=addReservation($this);
         
-    }
-
-    public function getHotel(){
-        return $this->hotel;
-    }
-
-    public function setHotel($hotel){
-        $this->hotel=$hotel;
     }
 
     public function getClient(){

@@ -26,9 +26,9 @@ $chambre18= new Chambre("18","3 lits",300,true,$hilton);
 $chambre19= new Chambre("19","3 lits",300,true,$hilton);
 
 //Réservations 
-$reservation1 = new Reservation($hilton,$mickaM,$chambre3,"2021-01-01","01-01-2021");
-$reservation2 = new Reservation($hilton,$mickaM,$chambre4,"2021-03-11","2021-03-11");
-$reservation3 = new Reservation($hilton,$virgileG,$chambre19,"2021-04-01","2021-04-01");
+$reservation1 = new Reservation($mickaM,$chambre3,"2021-01-01","01-01-2021");
+$reservation2 = new Reservation($mickaM,$chambre4,"2021-03-11","2021-03-11");
+$reservation3 = new Reservation($virgileG,$chambre19,"2021-04-01","2021-04-01");
 
 
 
