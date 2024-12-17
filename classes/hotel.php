@@ -4,20 +4,19 @@ class Hotel {
     //attributs 
     private string $nomHotel; 
     private string $adresseHotel;
-    private integer $nbChambres;
+    private int $nbChambres;
 
     // private array $chambres;
 
     private array $reservations;
 
     // fonction constructeur 
-    public function __construct(string $nomHotel, string $adresseHotel, integer $nbChambres){
+    public function __construct(string $nomHotel, string $adresseHotel, int $nbChambres){
         $this->nomHotel = $nomHotel;
         $this->adresseHotel = $adresseHotel;
         $this->nbChambres = $nbChambres;
 
         // $this->chambres=[];
-
         $this->reservations=[];
     }
 
@@ -39,7 +38,7 @@ class Hotel {
     }
 
     public function getNbChambres(){
-        return $this->getNbChambres;
+        return $this->nbChambres;
     }
 
     public function setNbChambres($nbChambres){
@@ -49,10 +48,7 @@ class Hotel {
 
 
     public function showInfoHotel(){
-        $result = "<h2> $this->getNomHotel() <h2><br>
-                    $this->getAdresseHotel<br>
-                    $this->getNbChambres";
-
+        $result = "<p style=font-family:Arial>".$this->getNomHotel()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : ".$this->getNbChambres()."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
          return $result;
     }
 
@@ -79,10 +75,17 @@ class Hotel {
     }
 
     public function showReservations(){
+        $result="<p style=font-family:Arial>"."Réservation de l'hôtel ".$this->getNomHotel()."</p>";
 
-        foreach($this->reservations as $reservation){
-            $result = "";
+            if($this->getReservations()==[]){
+                $result .= "Aucune réservation!";
+            }else{
+            foreach($this->reservations as $reservation){
+                
+
+            
+            }
         }
+        return $result;
     }
-   
 }
