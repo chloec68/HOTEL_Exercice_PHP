@@ -13,8 +13,8 @@ class Reservation{
         $this->dateReservation=new DateTime($dateReservation);
         $this->dateDepart=new DateTime($dateDepart);
   
-        // $this->client=addReservation($this);
-        // $this->chambre=addReservation($this);
+        $this->client=addReservation($this);
+        $this->chambre=addReservation($this);
         
     }
 

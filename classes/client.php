@@ -41,6 +41,8 @@ class Client {
             $this->reservations[]=$reservation;
         }
 
+        // fonction d'affichage
+
         public function afficherReservations(){
             $result = "<p style=font-family:Arial>"."Réservations de ".$this->getClientSurname()." ".$this->getClientName()."<br>";
 

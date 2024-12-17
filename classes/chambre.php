@@ -7,6 +7,8 @@ class Chambre {
     private bool $wifi;
 
     private Hotel $hotel;
+
+    private array $reservations;
     
 
     public function __construct(string $numeroChambre,string $nbLits, float $prixNuit, bool $wifi,$hotel){
@@ -18,6 +20,8 @@ class Chambre {
         $this->hotel=$hotel;
 
         $this->hotel->addChambre($this);
+
+        $this->reservations=[];
 
     }
 
@@ -51,6 +55,18 @@ class Chambre {
 
     public function setWifi($wifi){
         $this->wifi=$wifi;
+    }
+
+    public function getReservations(){
+        return $this->reservations;
+    }
+
+    public function setReservations($reservations){
+        $this->reservations=$reservations;
+    }
+
+    public function addReservation(Reservation $reservation){
+        $this->reservations[]=$reservation;
     }
 
 }
