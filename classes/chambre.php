@@ -69,5 +69,13 @@ class Chambre {
         $this->reservations[]=$reservation;
     }
 
+    // fonction chambreReservee 
+
+    // fonction d'affichage 
+
+    public function afficherClient(){
+
+    }
+
 }
 
