@@ -60,7 +60,7 @@ class Hotel {
     // fonctions affichage
 
     public function showInfoHotel(){
-        $result = "<p style=font-family:Arial>".$this->getNomHotel()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : ".$this->getNbChambres()."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
+        $result = "<p style=font-family:Arial>".$this->getNomHotel()." ".$this->getVille()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : ".$this->getNbChambres()."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
          return $result;
     }
 

@@ -46,11 +46,13 @@ class Client {
         public function afficherReservations(){
             $result = "<p style=font-family:Arial>"."Réservations de ".$this->getClientSurname()." ".$this->getClientName()."<br>";
 
-
-            foreach($this->reservations as $reservation){
-              $result.= $reservation->getClient();
-            }
-
+            if($this->getReservations()==[]){
+                $result .= "Aucune réservation !";
+            }else{
+                foreach($this->reservations as $reservation){
+                    $result.= $reservation->getClient()." - "."Chambre ".$reservation->getChambre." - "."du ".$reservation->getDateReservation." au ".$reservation->getDateDepart;
+                  }
+            }        
             return $result;
         }
 
