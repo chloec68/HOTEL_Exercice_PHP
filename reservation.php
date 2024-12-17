@@ -4,11 +4,14 @@ class Reservation{
     private Hotel $hotel;
     private Client $client;
     private DateTime $dateReservation;
+    private DateTime $dateDepart;
 
-    public function __construct(Hotel $hotel, Client $client, string $dateReservation){
+
+    public function __construct(Hotel $hotel, Client $client, string $dateReservation, string $dateDepart){
         $this->hotel=$hotel;
         $this->client=$client;
         $this->dateReservation=$dateReservation;
+  
 
         $this->hotel=addHotel($this);
         $this->client=addClient($this);
@@ -37,4 +40,21 @@ class Reservation{
     public function setDateReservation($dateReservation){
         $this->dateReservation = $dateReservation;
     }
+
+    public function getDateDepart(){
+        return $this->dateDepart;
+    }
+
+    public function setDateDepart($dateDepart){
+        $this->dateDepart = $dateDepart;
+    }
+
+    public function showReservations(){
+
+        foreach($this->reservations as $reservation){
+            $result = "";
+        }
+    }
+
+
 }
