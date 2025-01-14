@@ -1,25 +1,32 @@
 <?php
-
+// définition de la classe Hotel 
 class Hotel {
-    //attributs 
+    //définition des attributs de la classe Hotel 
+    // les attributs sont privés (modificateurs d'accès,encapsulation) donc ils sont inaccessibles en dehors de la classe ; 
     private string $nomHotel; 
     private string $adresseHotel;
     private string $ville;
     private string $cp;
-
+    // attribut du type tableau : il contient plusieurs chambres, cad plusieurs objets de la classe Chambre 
     private array $chambres;
 
-    // fonction constructeur 
-    public function __construct(string $nomHotel, string $adresseHotel, int $nbChambres, string $ville,string $cp){
+    // fonction constructeur et ses arguments :
+    // fonction qui est appelée automatiquement au moment de l'instanciation d'un objet de la classe Hotel
+    public function __construct(string $nomHotel, string $adresseHotel, string $ville,string $cp){
+        //initialisation des propriétés du constructeur : 
         $this->nomHotel = $nomHotel;
+        // affectation de la valeur de l'argument $nomHotel à l'attribut $nomHotel de l'objet en cours de création 
         $this->adresseHotel = $adresseHotel;
         $this->ville=$ville;
         $this->cp=$cp;
 
         $this->chambres=[];
+        // initialisation du tableau chambres ; ce tableau permettra de stocker les objets de la classe Chambre 
     }
 
     //getters & setters 
+    // définition des méthodes permettant de récupérer la valeur des attributs privés de la classe (Getters)
+    // et des méthodes permettant de modifier la valeur des attributs privés de la classe (Setters)
     public function getNomHotel():string{
         return $this->nomHotel;
     }
@@ -52,13 +59,13 @@ class Hotel {
         $this->cp=$cp;
     }
 
-
+    // définition d'une méthode permettant d'ajouter un objet chambre à la propriété $chambres de l'objet Hotel 
     public function addChambre(Chambre $chambre){
         $this->chambres[]=$chambre;
     }
     
 
-    // fonctions affichage
+    // ****************************fonctions affichage*******************************
 
     public function showInfoHotel(){
         $result = "<p style=font-family:Arial>".$this->getNomHotel()." ".$this->getCp()." ".$this->getVille()."<br>".$this->getAdresseHotel()."<br>"."Nombre de chambres : "."<br>"."Nombre de chambres réservées : "."<br>"."Nombre de chambres disponibles : "."</p>";
