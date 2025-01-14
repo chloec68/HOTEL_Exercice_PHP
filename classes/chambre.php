@@ -5,24 +5,22 @@ class Chambre {
     private string $nbLits;
     private float $prixNuit;
     private bool $wifi;
-
+    private bool $reservee;
+    // définition de l'attribut hotel de la classe chambre auquel on affecte un objet hotel de la classe Hotel
     private Hotel $hotel;
-
-    private array $reservations;
+    private Reservation $reservation;
     
 
-    public function __construct(string $numeroChambre,string $nbLits, float $prixNuit, bool $wifi,$hotel){
+    public function __construct(string $numeroChambre,string $nbLits, float $prixNuit, bool $wifi,$hotel, bool $reservee=false){
         $this->numeroChambre = $numeroChambre;
         $this->nbLits = $nbLits;
         $this->prixNuit = $prixNuit;
         $this->wifi = $wifi;
-        
+        $this->reservee=$reservee;
+        //assignation de l'objet hotel à la propriété hotel de la classe Chambre
         $this->hotel=$hotel;
-
+        //ajout de l'objet chambre à l'objet hotel
         $this->hotel->addChambre($this);
-
-        $this->reservations=[];
-
     }
 
     public function getNumeroChambre():string{
@@ -57,25 +55,24 @@ class Chambre {
         $this->wifi=$wifi;
     }
 
-    public function getReservations(){
-        return $this->reservations;
+    public function getReservee():bool{
+        return $this->reservee;
     }
 
-    public function setReservations($reservations){
-        $this->reservations=$reservations;
+    public function setReservee($reservee){
+        $this->reservee=$reservee;
     }
 
-    public function addReservation(Reservation $reservation){
-        $this->reservations[]=$reservation;
+    public function getHotel():Hotel{
+        return $this->hotel;
     }
 
-    // fonction chambreReservee 
-
-    // fonction d'affichage 
-
-    public function afficherClient(){
-
+    public function getReservation():Reservation{
+        return $this->$reservation;
     }
 
+    public function shoWBooking(){
+        return $this->reservation->reservation();
+    }
 }
 

@@ -7,8 +7,8 @@ spl_autoload_register(function ($class_name) {
 
 
 //Création des hôtels
-$hilton = new Hotel ("Hilton ****","10, route de la Gare",30,"STRASBOURG","67000");
-$regent = new Hotel ("Regent ****","61, rue Dauphine",25,"Paris","75006");
+$hilton = new Hotel ("Hilton ****","10, route de la Gare","STRASBOURG","67000");
+$regent = new Hotel ("Regent ****","61, rue Dauphine","Paris","75006");
 
 //Création des clients
 $virgileG = new Client("GIBELLO","Virgile");
@@ -33,8 +33,6 @@ $reservation3 = new Reservation($virgileG,$chambre19,"2021-04-01","2021-04-01");
 
 
 
-echo $hilton->showInfoHotel();
+echo $hilton->InfoHotel();
 
-echo $hilton->afficherChambresReservees();
-
-echo $mickaM->afficherReservations();
+echo $hilton->afficherReservations();
