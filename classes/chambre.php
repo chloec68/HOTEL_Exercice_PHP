@@ -6,9 +6,10 @@ class Chambre {
     private float $prixNuit;
     private bool $wifi;
     private bool $reservee;
-    // définition de l'attribut hotel de la classe chambre auquel on affecte un objet hotel de la classe Hotel
+
     private Hotel $hotel;
-    private Reservation $reservation;
+
+    private array $reservations;
     
 
     public function __construct(string $numeroChambre,string $nbLits, float $prixNuit, bool $wifi,$hotel, bool $reservee=false){
@@ -17,10 +18,15 @@ class Chambre {
         $this->prixNuit = $prixNuit;
         $this->wifi = $wifi;
         $this->reservee=$reservee;
-        //assignation de l'objet hotel à la propriété hotel de la classe Chambre
+       
         $this->hotel=$hotel;
-        //ajout de l'objet chambre à l'objet hotel
-        $this->hotel->addChambre($this);
+        //j'appelle la méthode ajouterChambre() de la classe Hotel et je l'applique à l'objet instancié pour que chaque nouvel objet Chambre s'ajoute dès l'instanciation à 
+        // un tableau indexé standard $chambres qui fait partie de la classe Hotel
+        $this->hotel->ajouterChambre($this);
+        
+        // initialisation de l'attribut reservation de la classe Chambre : un tableau vide -> je créé une méthode addReservation() dans la classe Chambre et je l'appelle dans 
+        // reservations pour que chaque nouvel objet reservation créé s'ajoute au tableau contenu dans l'objet Chambre dès l'instanciation
+        $this->reservations=[];
     }
 
     public function getNumeroChambre():string{
@@ -67,12 +73,26 @@ class Chambre {
         return $this->hotel;
     }
 
-    public function getReservation():Reservation{
-        return $this->$reservation;
+    public function getReservations():array{
+        return $this->reservations;
     }
 
-    public function shoWBooking(){
-        return $this->reservation->reservation();
+    public function addReservation(Reservation $reservation){
+            if($this->getReservee()==false){
+                $this->reservations[]=$reservation;
+                $this->setReservee(true);
+            }else{
+                echo "La chambre est déjà réservée";
+            }
+    }
+
+    public function afficherReservations(){
+ 
+        foreach($this->reservations as $reservation){
+            $reservation->afficherDetailsReservation();
+            
+        }
+        
     }
 }
 

@@ -56,16 +56,24 @@ class Reservation{
         $this->dateDepart = $dateDepart;
     }
 
+    // ajouter une fonction qui passe le statut de la chambre réservée à réservé 
+    public function reserverChambre(Chambre $chambre){
+        if($chambre->getReservee()==false){
+            $chambre->setReservee(true);
+        }else{
+            echo "La chambre est déjà réservée";
+        }
+    }
+    
+
     public function __toString(){
        
     }
     // définition de la méthode magique __toString() qui permet de retourner une chaîne de caractères lorsqu'on essaie d'afficher un OBJET de la classe Reservation = transforme l'objet en string ; 
     // exemple : echo $reservation1; 
 
-    public function reservation(){
+    public function afficherDetailsReservation(){
         return $this->client->getPrenomClient() . " " . $this->client->getNomClient()." - ".$this->chambre->getNumeroChambre()." du ".$this->dateArrivee->format('d-m-Y')." au ".$this->dateDepart->format('d-m-Y');
     }
-
-
 
 }

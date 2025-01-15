@@ -12,6 +12,9 @@ class Hotel {
 
     
 
+
+    
+
     // fonction constructeur et ses arguments :
     // fonction qui est appelée automatiquement au moment de l'instanciation d'un objet de la classe Hotel
     public function __construct(string $nomHotel, string $adresseHotel, string $ville,string $cp){
@@ -21,8 +24,6 @@ class Hotel {
         $this->adresseHotel=$adresseHotel;
         $this->ville=$ville;
         $this->cp=$cp;
-
-        
 
         $this->chambres=[];
         // initialisation du tableau chambres ; ce tableau permettra de stocker les objets de la classe Chambre 
@@ -67,51 +68,53 @@ class Hotel {
         return $this->chambres;
     }
 
+    // définition d'une méthode permettant d'ajouter un objet chambre à la propriété $chambres de l'objet Hotel 
+    public function ajouterChambre(Chambre $chambre){
+        $this->chambres[]=$chambre;
+    }
+
     // définition de la méthode permettant de récupérer le nombre total de chambres de l'objet Hotel
     public function getNbChambres():int{
         return count($this->chambres);
     }
 
-    // définition d'une méthode permettant d'ajouter un objet chambre à la propriété $chambres de l'objet Hotel 
-    public function addChambre(Chambre $chambre){
-        $this->chambres[]=$chambre;
-    }
-    
-    public function getChambresReservees():int{
+    public function getNbChambresReservees():int{
         $nbChambresReservees=0;
         foreach($this->chambres as $chambre){
-            if($chambre->getReservee()){
+            if($chambre->getReservee()== true){
                 $nbChambresReservees++;
+                
             }
         }
         return $nbChambresReservees;
     }
 
-    public function getChambresDisponibles():int{
-        return $this->getNbChambres() - $this->getChambresReservees();
+    public function getNbChambresDisponibles():int{
+        return $this->getNbChambres() - $this->getNbChambresReservees();
     }
 
     // **************************** fonctions affichage *******************************
 
     public function InfoHotel(){
-        $result = "<p style=font-family:Arial>" . $this->getNomHotel() . " " . $this->getVille() . "<br>" . $this->getAdresseHotel() . "<br>" . "Nombre de chambres : " . $this->getNbChambres() ."<br>"."Nombre de chambres réservées : " . $this->getChambresReservees() . "<br>" . "Nombre de chambres disponibles : ". $this->getChambresDisponibles() . "</p>";
+        $result = "<p style=font-family:Arial>" . $this->getNomHotel() . " " . $this->getVille() . "<br>" . $this->getAdresseHotel() . "<br>" . "Nombre de chambres : " . $this->getNbChambres() ."<br>"."Nombre de chambres réservées : " . $this->getNbChambresReservees() . "<br>" . "Nombre de chambres disponibles : ". $this->getNbChambresDisponibles() . "</p>";
          return $result;
     }
 
-    public function afficherReservations(){
-        $result = "<p style=font-family:Arial>Réservations de l'hotel " . $this->nomHotel . $this->cp . " : <br>";
-        foreach($this->chambres as $chambre){
-            if($chambre->getReservee()){
-                $result .= $chambre -> showBooking();
-            }
-        }
-        $result .= "</p>";
-        return $result;
-    }
-   
-
     public function __toString(){
         return $this->nomHotel." ".$this->ville;
+    }
+
+    public function voirReservations(){
+       
+        foreach ($this->chambres as $chambre){
+            // if (count($chambre->getReservations())>0){
+        
+               $chambre->afficherReservations();
+               var_dump($chambre->afficherReservations());
+            // }else{
+            //     echo "Pas de réservation";
+            // }
+        }
     }
 }
 

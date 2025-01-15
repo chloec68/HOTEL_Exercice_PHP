@@ -43,6 +43,6 @@ class Client {
         // fonction d'affichage
 
         public function __toString(){
-            return "Réservations de " . $this->prenomClient . " " . $this->nomClient. " : <br>";
+            return $this->prenomClient . " " . $this->nomClient. " : <br>";
         }
 }
