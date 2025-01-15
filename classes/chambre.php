@@ -85,14 +85,13 @@ class Chambre {
                 echo "La chambre est déjà réservée";
             }
     }
-
-    public function afficherReservations(){
+// PROBLEME ICI :
+    // public function afficherReservations(){
  
-        foreach($this->reservations as $reservation){
-            $reservation->afficherDetailsReservation();
-            
-        }
-        
-    }
+    //     foreach($this->reservations as $reservation){
+    //         $reservation->afficherDetailsReservation();
+    //         echo "Bonjour";
+    //     }
+    // }
 }
 

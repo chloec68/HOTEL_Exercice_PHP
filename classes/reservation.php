@@ -20,6 +20,8 @@ class Reservation{
         $this->dateDepart=new DateTime($dateDepart);
         // définition des paramètres du constructeur ; 
         // lorsqu'un nouvel objet Reservation est créé, il faut lui fournir ces paramètres ; 
+        $this->client->addReservation($this);
+        $this->chambre->addReservation($this);
     }
 
     public function getClient(){
@@ -57,13 +59,13 @@ class Reservation{
     }
 
     // ajouter une fonction qui passe le statut de la chambre réservée à réservé 
-    public function reserverChambre(Chambre $chambre){
-        if($chambre->getReservee()==false){
-            $chambre->setReservee(true);
-        }else{
-            echo "La chambre est déjà réservée";
-        }
-    }
+    // public function reserverChambre(Chambre $chambre){
+    //     if($chambre->getReservee()==false){
+    //         $chambre->setReservee(true);
+    //     }else{
+    //         echo "La chambre est déjà réservée";
+    //     }
+    // }
     
 
     public function __toString(){

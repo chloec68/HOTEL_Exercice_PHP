@@ -33,64 +33,21 @@ $reservation2 = new Reservation($mickaM,$chambre4,"2021-03-11","2021-03-11");
 $reservation3 = new Reservation($virgileG,$chambre19,"2021-04-01","2021-04-01");
 $reservation4 = new Reservation($virgileG,$chambre17,"2021-04-01","2021-04-01");
 
-$reservation5 = new Reservation($virgileG,$chambre17,"2021-04-01","2021-04-01");
+// Ajout des objets chambre au tableau $chambres de l'hôtel
+// => L'ajout est automatique à chaque instanciation d'un nouvel objet Chambre ; 
+// Dans le constructeur de l'objet Chambre, j'appelle la méthode ajouterChambre() défini dans la classe Hotel ; 
+// Ainsi, chaque nouvel objet chambre est automatiquement ajouté au tableau de chambres de l'objet Hotel ; 
 
-//Attribution de la valeur "true" au booleen $reservee des objets Chambres 
-// $chambre3->setReservee(true);
-// $chambre4->setReservee(true);
-// $chambre19->setReservee(true);
-// $chambre17->setReservee(true);
+// Ajout des objets reservation au tableau $reservations de Client et Chambre -> ajout automatique à l'instanciation de l'objet Reservation en raison de la présence des méthodes
+// addReservation() respectives des objets Client et Chambre dans le constructor de Reservation ;
 
-//
-// $reservation1->reserverChambre($chambre3);
-// $reservation2->reserverChambre($chambre4);
-// $reservation3->reserverChambre($chambre19);
-// $reservation4->reserverChambre($chambre17);
-
-// $reservation5->reserverChambre($chambre3);
-
-
-// Ajout des objets chambres au tableau $chambres de l'hôtel
-$hilton->ajouterChambre($chambre1);
-$hilton->ajouterChambre($chambre2);
-$hilton->ajouterChambre($chambre3);
-$hilton->ajouterChambre($chambre3);
-$hilton->ajouterChambre($chambre17);
-
-$regent->ajouterChambre($chambre16);
-$regent->ajouterChambre($chambre18);
-$regent->ajouterChambre($chambre19);
-
-// Ajout des objets réservations au tableau $reservations des clients 
-$mickaM->addReservation($reservation1);
-$mickaM->addReservation($reservation2);
-$virgileG->addReservation($reservation3);
-$virgileG->addReservation($reservation4);
-
-// Ajout des objets réservations au tableau $reservations des chambres 
-$chambre3->addReservation($reservation1);
-$chambre4->addReservation($reservation2);
-$chambre19->addReservation($reservation3);
-$chambre17->addReservation($reservation4);
-
-
-
-
-
-// $chambre17->addReservation($reservation5);
-// echo $reservation5;
-
-// var_dump($hilton->getChambres());
-// var_dump($hilton->getNbChambresReservees());
 
 
 
 // AFFICHAGE
 echo $hilton->InfoHotel();
-
-
-// echo $hilton->voirReservations();
-
-// echo $chambre3->afficherReservations();
+echo $regent->InfoHotel();
 
 echo $reservation1->afficherDetailsReservation();
+
+echo $hilton->voirReservations();

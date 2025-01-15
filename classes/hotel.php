@@ -10,10 +10,6 @@ class Hotel {
     // attribut du type tableau : il contient plusieurs chambres, cad plusieurs objets de la classe Chambre 
     private array $chambres;
 
-    
-
-
-    
 
     // fonction constructeur et ses arguments :
     // fonction qui est appelée automatiquement au moment de l'instanciation d'un objet de la classe Hotel
@@ -107,13 +103,13 @@ class Hotel {
     public function voirReservations(){
        
         foreach ($this->chambres as $chambre){
-            // if (count($chambre->getReservations())>0){
+            if (count($chambre->getReservations())>0){
         
                $chambre->afficherReservations();
                var_dump($chambre->afficherReservations());
-            // }else{
-            //     echo "Pas de réservation";
-            // }
+            }else{
+                echo "Pas de réservation";
+            }
         }
     }
 }
