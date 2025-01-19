@@ -22,6 +22,7 @@ class Reservation{
         // lorsqu'un nouvel objet Reservation est créé, il faut lui fournir ces paramètres ; 
         $this->client->addReservation($this);
         $this->chambre->addReservation($this);
+        
     }
 
     public function getClient(){
@@ -59,13 +60,13 @@ class Reservation{
     }
 
     // ajouter une fonction qui passe le statut de la chambre réservée à réservé 
-    // public function reserverChambre(Chambre $chambre){
-    //     if($chambre->getReservee()==false){
-    //         $chambre->setReservee(true);
-    //     }else{
-    //         echo "La chambre est déjà réservée";
-    //     }
-    // }
+    public function reserverChambre(Chambre $chambre){
+        if($chambre->getReservee()==false){
+            $chambre->setReservee(true);
+        }else{
+            echo "La chambre est déjà réservée";
+        }
+    }
     
 
     public function __toString(){
@@ -75,7 +76,11 @@ class Reservation{
     // exemple : echo $reservation1; 
 
     public function afficherDetailsReservation(){
-        return $this->client->getPrenomClient() . " " . $this->client->getNomClient()." - ".$this->chambre->getNumeroChambre()." du ".$this->dateArrivee->format('d-m-Y')." au ".$this->dateDepart->format('d-m-Y');
+        return $this->client->getPrenomClient() . " " . $this->client->getNomClient()." - Chambre n° ".$this->chambre->getNumeroChambre()." du ".$this->dateArrivee->format('d-m-Y')." au ".$this->dateDepart->format('d-m-Y') . "<br>";
+    }
+
+    public function afficherDetailsReservationClient(){
+        return $this->chambre->
     }
 
 }

@@ -101,16 +101,13 @@ class Hotel {
     }
 
     public function voirReservations(){
-       
+        echo "Réservations de l'hôtel " . $this->nomHotel." ".$this->ville." <br>";
+
         foreach ($this->chambres as $chambre){
-            if (count($chambre->getReservations())>0){
-        
                $chambre->afficherReservations();
-               var_dump($chambre->afficherReservations());
-            }else{
-                echo "Pas de réservation";
-            }
         }
+
+        echo "<br>";
     }
 }
 

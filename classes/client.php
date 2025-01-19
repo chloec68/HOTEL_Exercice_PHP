@@ -47,4 +47,11 @@ class Client {
         public function __toString(){
             return $this->prenomClient . " " . $this->nomClient. " : <br>";
         }
+
+        public function afficherReservationsClient(){
+            foreach($this->reservations as $reservation){
+                echo $reservation->afficherDetailsReservation() ;
+                
+            }
+        }
 }

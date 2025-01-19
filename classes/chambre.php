@@ -27,6 +27,8 @@ class Chambre {
         // initialisation de l'attribut reservation de la classe Chambre : un tableau vide -> je créé une méthode addReservation() dans la classe Chambre et je l'appelle dans 
         // reservations pour que chaque nouvel objet reservation créé s'ajoute au tableau contenu dans l'objet Chambre dès l'instanciation
         $this->reservations=[];
+
+        // $this->reservations->addChambre($this);
     }
 
     public function getNumeroChambre():string{
@@ -73,6 +75,10 @@ class Chambre {
         return $this->hotel;
     }
 
+    // public function getNomHotel():string{
+    //     return $this->hotel->getNom();
+    // }
+
     public function getReservations():array{
         return $this->reservations;
     }
@@ -80,18 +86,19 @@ class Chambre {
     public function addReservation(Reservation $reservation){
             if($this->getReservee()==false){
                 $this->reservations[]=$reservation;
-                $this->setReservee(true);
+                $this->getReservee(true);
             }else{
                 echo "La chambre est déjà réservée";
             }
     }
-// PROBLEME ICI :
-    // public function afficherReservations(){
- 
-    //     foreach($this->reservations as $reservation){
-    //         $reservation->afficherDetailsReservation();
-    //         echo "Bonjour";
-    //     }
-    // }
+
+    public function afficherReservations(){
+        foreach($this->reservations as $reservation){
+            
+                echo $reservation->afficherDetailsReservation();
+        
+        }
+    }
 }
+
 
