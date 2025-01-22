@@ -79,7 +79,6 @@ class Hotel {
         foreach($this->chambres as $chambre){
             if($chambre->getReservee()== true){
                 $nbChambresReservees++;
-                
             }
         }
         return $nbChambresReservees;
@@ -92,7 +91,7 @@ class Hotel {
     // **************************** fonctions affichage *******************************
 
     public function InfoHotel(){
-        $result = "<p style=font-family:Arial>" . $this->getNomHotel() . " " . $this->getVille() . "<br>" . $this->getAdresseHotel() . "<br>" . "Nombre de chambres : " . $this->getNbChambres() ."<br>"."Nombre de chambres réservées : " . $this->getNbChambresReservees() . "<br>" . "Nombre de chambres disponibles : ". $this->getNbChambresDisponibles() . "</p>";
+        $result = $this->getNomHotel() . " " . $this->getVille() . "<br>" . $this->getAdresseHotel() . "<br>" . "Nombre de chambres : " . $this->getNbChambres() ."<br>"."Nombre de chambres réservées : " . $this->getNbChambresReservees() . "<br>" . "Nombre de chambres disponibles : ". $this->getNbChambresDisponibles() . "</p>";
          return $result;
     }
 
@@ -101,13 +100,16 @@ class Hotel {
     }
 
     public function voirReservations(){
-        echo "Réservations de l'hôtel " . $this->nomHotel." ".$this->ville." <br>";
-
-        foreach ($this->chambres as $chambre){
-               $chambre->afficherReservations();
+        echo "<span style=font-size:1.2em>" . $this->__toString() . "</span>";
+        if($this->getNbChambresReservees()>0){
+             echo "<div style='background-color:green;color:white;width:fit-content;padding-left:10px;padding-right:10px;border-radius:5px;'>" . $this->getNbChambresReservees() . " Réservations </div>";
+            foreach ($this->chambres as $chambre){
+               echo "<span>" . $chambre->afficherReservations() . "</span>";
+            } echo "<br>";
+        }else{
+            echo "<p>Pas de réservation</p>";
         }
-
-        echo "<br>";
+        return;
     }
 }
 

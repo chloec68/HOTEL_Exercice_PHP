@@ -39,7 +39,15 @@ class Client {
 
         public function getReservations():array{
             return $this->reservations;
-         }
+        }
+
+        public function nbReservations():int{
+            $nbReservations = 0;
+            foreach($this->reservations as $reservation){
+                $nbReservations++; 
+            }
+            return $nbReservations;
+        }
 
 
         // fonction d'affichage
@@ -49,9 +57,12 @@ class Client {
         }
 
         public function afficherReservationsClient(){
-            foreach($this->reservations as $reservation){
-                echo $reservation->afficherDetailsReservation() ;
-                
+            echo "Réservation de " . $this->__toString();
+                echo "<div style= background-color:green;color:white;padding-left:5px;padding-right:5px;width:fit-content;border-radius:5px>" . $this->nbReservations() . " réservations </div>";
+                foreach($this->getReservations() as $reservation){
+                  echo $reservation->afficherDetailsReservationClient();
             }
+            
+            "<br>";
         }
 }

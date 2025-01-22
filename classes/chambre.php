@@ -75,10 +75,6 @@ class Chambre {
         return $this->hotel;
     }
 
-    // public function getNomHotel():string{
-    //     return $this->hotel->getNom();
-    // }
-
     public function getReservations():array{
         return $this->reservations;
     }
@@ -86,7 +82,7 @@ class Chambre {
     public function addReservation(Reservation $reservation){
             if($this->getReservee()==false){
                 $this->reservations[]=$reservation;
-                $this->getReservee(true);
+                $this->setReservee(true);
             }else{
                 echo "La chambre est déjà réservée";
             }

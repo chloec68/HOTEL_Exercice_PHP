@@ -18,8 +18,7 @@ class Reservation{
         $this->chambre=$chambre;
         $this->dateArrivee=new DateTime($dateArrivee);
         $this->dateDepart=new DateTime($dateDepart);
-        // définition des paramètres du constructeur ; 
-        // lorsqu'un nouvel objet Reservation est créé, il faut lui fournir ces paramètres ; 
+      
         $this->client->addReservation($this);
         $this->chambre->addReservation($this);
         
@@ -44,11 +43,11 @@ class Reservation{
     }
 
     public function getDateArrivee(){
-        return $this->dateReservation;
+        return $this->dateArrivee;
     }
 
     public function setDateArrivee($dateArrivee){
-        $this->dateReservation = $dateReservation;
+        $this->dateArrivee = $dateArrivee;
     }
 
     public function getDateDepart(){
@@ -59,15 +58,21 @@ class Reservation{
         $this->dateDepart = $dateDepart;
     }
 
-    // ajouter une fonction qui passe le statut de la chambre réservée à réservé 
-    public function reserverChambre(Chambre $chambre){
-        if($chambre->getReservee()==false){
-            $chambre->setReservee(true);
-        }else{
-            echo "La chambre est déjà réservée";
-        }
+    public function getTotalNuits(){
+        $dateArrivee = $this->getDateArrivee();
+        $dateDepart = $this->getDateDepart();
+        $totalNuits = $dateDepart->diff($dateArrivee);
+        $result = $totalNuits->days;
+        return $result;
     }
-    
+
+    public function getPrixTotal(){
+        $nbJours=$this->getTotalNuits();
+        $prixNuit=$this->chambre->getPrixNuit();
+        $prixTotal = $nbJours * $prixNuit . " euros";
+        return $prixTotal;
+    }
+ 
 
     public function __toString(){
        
@@ -80,7 +85,7 @@ class Reservation{
     }
 
     public function afficherDetailsReservationClient(){
-        return $this->chambre->
+        return $this->chambre->getHotel() . " / Chambre : ".$this->chambre->getNumeroChambre(). " (". $this->chambre->getNbLits() . "-" . $this->chambre->getPrixNuit() . "euros" . " - Wifi:" .$this->chambre->getWifi() .")" . " du ".$this->dateArrivee->format('d-m-Y')." au ".$this->dateDepart->format('d-m-Y') . " (" . $this->getTotalNuits() . "jours) <br>" . "Total : " . $this->getPrixTotal() . "<br>";
     }
 
 }

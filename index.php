@@ -28,10 +28,10 @@ $chambre18= new Chambre("18","3 lits",300,false,$regent);
 $chambre19= new Chambre("19","3 lits",300,false,$regent);
 
 //Création des objets Réservations 
-$reservation1 = new Reservation($mickaM,$chambre3,"2021-01-01","2021-01-01");
-$reservation2 = new Reservation($mickaM,$chambre4,"2021-03-11","2021-03-11");
+$reservation1 = new Reservation($mickaM,$chambre3,"2021-01-01","2021-01-09");
+$reservation2 = new Reservation($mickaM,$chambre4,"2021-03-11","2021-03-17");
 // $reservation3 = new Reservation($virgileG,$chambre19,"2021-04-01","2021-04-01");
-$reservation4 = new Reservation($virgileG,$chambre17,"2021-04-01","2021-04-01");
+$reservation4 = new Reservation($virgileG,$chambre17,"2021-04-01","2021-04-09");
 
 // Ajout des objets chambre au tableau $chambres de l'hôtel
 // => L'ajout est automatique à chaque instanciation d'un nouvel objet Chambre ; 
@@ -47,9 +47,7 @@ $reservation4 = new Reservation($virgileG,$chambre17,"2021-04-01","2021-04-01");
 // AFFICHAGE
 echo $hilton->InfoHotel();
 echo $regent->InfoHotel();
-
 echo $hilton->voirReservations();
-
 echo $regent->voirReservations();
-
 echo $mickaM->afficherReservationsClient();
+
