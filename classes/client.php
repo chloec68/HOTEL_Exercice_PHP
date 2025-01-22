@@ -64,5 +64,6 @@ class Client {
             }
             
             "<br>";
+            return;
         }
 }
